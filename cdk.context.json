@@ -1,0 +1,70 @@
+{
+  "vpc-provider:account=168228779762:filter.isDefault=true:region=ap-northeast-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-e946c082",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-8e3b8be5",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "ap-northeast-2a",
+            "routeTableId": "rtb-2a480741"
+          },
+          {
+            "subnetId": "subnet-ba9ef3c1",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "ap-northeast-2b",
+            "routeTableId": "rtb-2a480741"
+          },
+          {
+            "subnetId": "subnet-847692cb",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "ap-northeast-2c",
+            "routeTableId": "rtb-2a480741"
+          },
+          {
+            "subnetId": "subnet-bbd322e4",
+            "cidr": "172.31.48.0/20",
+            "availabilityZone": "ap-northeast-2d",
+            "routeTableId": "rtb-2a480741"
+          }
+        ]
+      }
+    ]
+  },
+  "vpc-provider:account=168228779762:filter.isDefault=true:region=ap-northeast-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-d4f5efb3",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-c1d37489",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "ap-northeast-1a",
+            "routeTableId": "rtb-dad3a0bc"
+          },
+          {
+            "subnetId": "subnet-487e6f13",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "ap-northeast-1c",
+            "routeTableId": "rtb-dad3a0bc"
+          },
+          {
+            "subnetId": "subnet-d6bd13fd",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "ap-northeast-1d",
+            "routeTableId": "rtb-dad3a0bc"
+          }
+        ]
+      }
+    ]
+  }
+}
