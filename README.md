@@ -1,5 +1,5 @@
 ## AWS PI to Grafana.
-Sync AWS RDS/Aurora Performance Insights metrics to Managed Grafana.<br />
+Sync AWS RDS/Aurora's Performance Insights metrics to Managed Grafana.<br />
 
 ## Prerequisites
 1. Install and configure AWS CLI Version 2 environment:<br />
