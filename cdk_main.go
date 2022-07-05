@@ -83,6 +83,20 @@ func NewPiToGrafanaStack(scope constructs.Construct, id string, props *PiToGrafa
 
 	config.MySqlConnection.Host = *dbInstance.InstanceEndpoint().Hostname()
 
+	// Output data source info.
+	awscdk.NewCfnOutput(stack, jsii.String("host"), &awscdk.CfnOutputProps{
+		Value: jsii.String(config.MySqlConnection.Host),
+	})
+	awscdk.NewCfnOutput(stack, jsii.String("database"), &awscdk.CfnOutputProps{
+		Value: jsii.String(config.MySqlConnection.Database),
+	})
+	awscdk.NewCfnOutput(stack, jsii.String("user"), &awscdk.CfnOutputProps{
+		Value: jsii.String(config.MySqlConnection.User),
+	})
+	awscdk.NewCfnOutput(stack, jsii.String("password"), &awscdk.CfnOutputProps{
+		Value: jsii.String(config.MySqlConnection.Password),
+	})
+
 	// Create role for lambda function.
 	lambdaRole := awsiam.NewRole(stack, jsii.String("LambdaRole"), &awsiam.RoleProps{
 		RoleName:  jsii.String(*stack.StackName() + "-LambdaRole"),

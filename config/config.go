@@ -16,10 +16,10 @@ type DataSource struct {
 // DO NOT keep DB info here.
 // This is just for convenience of testing.
 var MySqlConnection = DataSource{
-	Host:     "learn-grafana.c2jzihkjutmr.ap-northeast-1.rds.amazonaws.com:3306",
-	Database: "my2",
-	User:     "my2",
-	Password: "1234abcd",
+	Host:     "localhost:3306",
+	Database: "grafana_db",
+	User:     "grafana_usr",
+	Password: "grafana_pwd",
 }
 
 const (

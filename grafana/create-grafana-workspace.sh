@@ -76,12 +76,20 @@ createWorkspace()
                             --query workspace.status)"
     done
 
+    local WORKSPACE_ENDPOINT="$(aws grafana describe-workspace \
+                            --workspace-id ${WORKSPACE_ID} \
+                            --region ${DEPLOYMENT_REGION} \
+                            --output text \
+                            --query workspace.endpoint)"
+
     jq -n --arg wsName ${WORKSPACE_NAME} \
         --arg wsId ${WORKSPACE_ID} \
+        --arg wsEndpoint ${WORKSPACE_ENDPOINT} \
         --arg wsRole ${ROLE_NAME} \
         --arg region ${DEPLOYMENT_REGION} \
         '{
-                "workspaceName": $wsName, 
+                "workspaceName": $wsName,
+                "workspaceEndpoint": $wsEndpoint,
                 "workspaceId":$wsId,
                 "workspaceRole":$wsRole,
                 "deploymentRegion":$region

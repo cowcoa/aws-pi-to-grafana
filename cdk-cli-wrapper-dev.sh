@@ -35,7 +35,7 @@ DB_INSTANCE_IDENTIFIER="$(aws rds describe-db-instances \
                             --region ${CDK_REGION} \
                             --output text \
                             --query DBInstances[0].DbiResourceId)"
-set -- "$@" "-c" "dbInstanceId=${DB_INSTANCE_IDENTIFIER}"
+set -- "$@" "-c" "dbInstanceId=${DB_INSTANCE_IDENTIFIER}" "--outputs-file" "${SHELL_PATH}/cdk.out/datasource-info.json"
 $SHELL_PATH/cdk-cli-wrapper.sh ${CDK_ACC} ${CDK_REGION} "$@"
 
 # CDK command post-process.
