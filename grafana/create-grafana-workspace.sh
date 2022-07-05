@@ -23,7 +23,8 @@ fi
 
 # Get script location.
 SHELL_PATH=$(cd "$(dirname "$0")";pwd)
-GRAFANA_DATA_FILE=grafana-workspace-info.json
+GRAFANA_WORKSPACE_FILE="grafana-workspace-info.json"
+GRAFANA_DATASOURCE_FILE="mysql-datasource-info.json"
 
 createWorkspace()
 {
@@ -93,16 +94,16 @@ createWorkspace()
                 "workspaceId":$wsId,
                 "workspaceRole":$wsRole,
                 "deploymentRegion":$region
-        }' > ${SHELL_PATH}/${GRAFANA_DATA_FILE}
+        }' > ${SHELL_PATH}/${GRAFANA_WORKSPACE_FILE}
 
     echo "Done."
 }
 
 deleteWorkspace()
 {
-    local WORKSPACE_ID="$(jq -r .workspaceId ${SHELL_PATH}/${GRAFANA_DATA_FILE})"
-    local ROLE_NAME="$(jq -r .workspaceRole ${SHELL_PATH}/${GRAFANA_DATA_FILE})"
-    local DEPLOYMENT_REGION="$(jq -r .deploymentRegion ${SHELL_PATH}/${GRAFANA_DATA_FILE})"
+    local WORKSPACE_ID="$(jq -r .workspaceId ${SHELL_PATH}/${GRAFANA_WORKSPACE_FILE})"
+    local ROLE_NAME="$(jq -r .workspaceRole ${SHELL_PATH}/${GRAFANA_WORKSPACE_FILE})"
+    local DEPLOYMENT_REGION="$(jq -r .deploymentRegion ${SHELL_PATH}/${GRAFANA_WORKSPACE_FILE})"
 
     aws grafana delete-workspace --workspace-id ${WORKSPACE_ID} --region ${DEPLOYMENT_REGION}
 
@@ -124,7 +125,8 @@ deleteWorkspace()
     done
 
     aws iam delete-role --role-name "${ROLE_NAME}"
-    rm -rf ${SHELL_PATH}/${GRAFANA_DATA_FILE}
+    rm -rf ${SHELL_PATH}/${GRAFANA_WORKSPACE_FILE}
+    rm -rf ${SHELL_PATH}/${GRAFANA_DATASOURCE_FILE}
 
     echo "Done."
 }
