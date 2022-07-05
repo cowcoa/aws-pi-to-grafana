@@ -13,12 +13,6 @@ DS_DATABASE="$(jq -r .${DS_NAME}.database ${SHELL_PATH}/../cdk.out/${GRAFANA_DAT
 DS_USER="$(jq -r .${DS_NAME}.user ${SHELL_PATH}/../cdk.out/${GRAFANA_DATASOURCE_INPUT_FILE})"
 DS_PASSWORD="$(jq -r .${DS_NAME}.password ${SHELL_PATH}/../cdk.out/${GRAFANA_DATASOURCE_INPUT_FILE})"
 
-echo "DS_NAME: ${DS_NAME}"
-echo "DS_HOST: ${DS_HOST}"
-echo "DS_DATABASE: ${DS_DATABASE}"
-echo "DS_USER: ${DS_USER}"
-echo "DS_PASSWORD: ${DS_PASSWORD}"
-
 jq -n --arg dsName ${DS_NAME} \
     --arg dsHost ${DS_HOST} \
     --arg dsDb ${DS_DATABASE} \
