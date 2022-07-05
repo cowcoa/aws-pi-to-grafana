@@ -20,20 +20,19 @@ echo "DS_USER: ${DS_USER}"
 echo "DS_PASSWORD: ${DS_PASSWORD}"
 
 jq -n --arg dsName ${DS_NAME} \
-    --arg dsType "mysql" \
     --arg dsHost ${DS_HOST} \
     --arg dsDb ${DS_DATABASE} \
     --arg dsUsr ${DS_USER} \
     --arg dsPwd ${DS_PASSWORD} \
-    --arg dsAcc "direct" \
     '{
-        "name": $dsName, 
-        "type": $dsType, 
+        "name": $dsName,
+        "type": "mysql",
         "url": $dsHost,
         "database": $dsDb,
         "user": $dsUsr,
         "password": $dsPwd,
-        "access": $dsAcc
+        "access": "direct",
+        "isDefault": true
     }' > ${SHELL_PATH}/${GRAFANA_DATASOURCE_OUTPUT_FILE}
 
 WORKSPACE_ID="$(jq -r .workspaceId ${SHELL_PATH}/${GRAFANA_WORKSPACE_FILE})"
