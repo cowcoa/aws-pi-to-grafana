@@ -2,6 +2,20 @@
 Demonstrate how to sync AWS RDS/Aurora's Performance Insights metrics to Managed Grafana.<br />
 Since Performance Insights only measures one DB instance at a time, so does this example, which can only sync PI metrics for a specified DB instance to the Grafana dashboard. But you can extend this example to the cluster level by yourself.
 
+## Supported Metrics 
+
+db:
+
+| Metric | Unit | Table | Description |
+| ------ | ------ | ------ | ------ |
+| db.SQL.Com_analyze | Queries per second | grafana.db_status | Number of ANALYZE commands executed |
+| db.SQL.Com_optimize | Queries per second | grafana.db_status | Number of OPTIMIZE commands executed |
+| db.SQL.Com_select | Queries per second | grafana.db_status | Number of SELECT commands executed |
+| db.SQL.Innodb_rows_inserted | Rows per second | grafana.db_status | Total rows inserted by InnoDB |
+| db.SQL.Innodb_rows_deleted | Rows per second | grafana.db_status | Total rows deleted by InnoDB |
+| db.SQL.Innodb_rows_updated | Rows per second | grafana.db_status | Total rows updated by InnoDB |
+| db.SQL.Innodb_rows_read | Rows per second | grafana.db_status | Total rows read by InnoDB |
+
 ## Prerequisites
 1. Install and configure AWS CLI Version 2 environment:<br />
    [Installation] - Installing or updating the latest version of the AWS CLI v2.<br />
