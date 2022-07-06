@@ -51,11 +51,9 @@ Since Performance Insights only shows metrics for one DB instance at a time, so 
    This command will also save the MySQL database information to grafana/mysql-datasource-info.json file.
 4. Sign in to your AWS Web Console.
 5. You can refer to [this blog](https://aws.amazon.com/blogs/security/how-to-create-and-manage-users-within-aws-sso/) to create AWS SSO User.
-6. Open the Amazon Grafana service page to find the Grafana workspace you just created.
-7. [Add the AWS SSO User](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-manage-users-and-groups-AMG.html) you just created to your Grafana workspace.
-8. Open the Grafana workspace by clicking on the "Grafana workspace URL" and sign in.
-9. Find the MySQL DataSource you just created, fill in the password(according to the grafana/mysql-datasource-info.json file), and click "Save & Test".
-10. Import Grafana dashboard by upload grafana/grafana-dashboard.json file.
+6. Find the Grafana workspace you just created and [add the AWS SSO User](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-manage-users-and-groups-AMG.html) as the ADMIN.
+7. Sign in to the Grafana workspace and find the MySQL DataSource you just created, fill in the password(according to the grafana/mysql-datasource-info.json file), and click "Save & Test".
+8. Import Grafana dashboard by upload grafana/grafana-dashboard.json file.
 
 ## Examples
 
