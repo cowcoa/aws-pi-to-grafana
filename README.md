@@ -26,6 +26,17 @@ Since Performance Insights only shows metrics for one DB instance at a time, so 
     sudo yum install -y make
     sudo yum install -y jq
     ```
+
+## Configuration
+
+You can edit the cdk.json file to modify the deployment configuration.
+
+| Key | Example Value | Description |
+| ------ | ------ | ------ |
+| stackName | PI2Grafana | CloudFormation stack name. It's difficult for jq to process JSON keys containing '-', so avoid naming your stack that way. |
+| deploymentRegion | ap-northeast-1 | CloudFormation stack deployment region. If the value is empty, the default is the same as the region where deploy is executed. |
+| dbInstanceName | my-rds-db-instance | RDS/Aurora DB instance name. This instance is your monitoring target, so make sure it already exists before deploying this example. |
+
 ## Deployment
 1. Run the following command to deploy AWS infra and code by CDK Toolkit:<br />
      ```sh
