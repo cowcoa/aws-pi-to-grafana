@@ -1,5 +1,6 @@
 ## AWS PI to Grafana
-Sync AWS RDS/Aurora's Performance Insights metrics to Managed Grafana.<br />
+Demonstrate how to sync AWS RDS/Aurora's Performance Insights metrics to Managed Grafana.<br />
+Since Performance Insights only shows metrics for one DB instance at a time, so does this example, which can only sync PI metrics for a specified DB instance to the Grafana dashboard. But you can extend this example to the cluster level by yourself.
 
 ## Prerequisites
 1. Install and configure AWS CLI Version 2 environment:<br />
@@ -26,29 +27,35 @@ Sync AWS RDS/Aurora's Performance Insights metrics to Managed Grafana.<br />
     sudo yum install -y jq
     ```
 ## Deployment
-Run the following command to deploy AWS infra and code by CDK Toolkit:<br />
-  ```sh
-  cdk-cli-wrapper-dev.sh deploy
-  ```
-You can also clean up the deployment by running command:<br />
-  ```sh
-  cdk-cli-wrapper-dev.sh destroy
-  ```
-Run the following command to create AWS Managed Grafana workspace:<br />
-  ```sh
-  grafana/create-grafana-workspace.sh create
-  ```
-After the above command is executed, you can create SSO user through AWS console and login to the Grafana workspace.
-This command will also save the Grafana workspace information to grafana/grafana-workspace-info.json file.<br />
-You can also clean up the Grafana workspace by running command:<br />
-  ```sh
-  grafana/create-grafana-workspace.sh delete
-  ```
-Run the following command to create default MySQL DataSource in Grafana workspace:<br />
-  ```sh
-  grafana/create-grafana-datasource.sh
-  ```
-This command will also save the MySQL database information to grafana/mysql-datasource-info.json file.
+1. Run the following command to deploy AWS infra and code by CDK Toolkit:<br />
+     ```sh
+     cdk-cli-wrapper-dev.sh deploy
+     ```
+   You can also clean up the deployment by running command:<br />
+     ```sh
+     cdk-cli-wrapper-dev.sh destroy
+     ```
+2. Run the following command to create AWS Managed Grafana workspace:<br />
+     ```sh
+     grafana/create-grafana-workspace.sh create
+     ```
+   This command will also save the Grafana workspace information to grafana/grafana-workspace-info.json file.<br />
+   You can also clean up the Grafana workspace by running command:<br />
+     ```sh
+     grafana/create-grafana-workspace.sh delete
+     ```
+3. Run the following command to create default MySQL DataSource in Grafana workspace:<br />
+     ```sh
+     grafana/create-grafana-datasource.sh
+     ```
+   This command will also save the MySQL database information to grafana/mysql-datasource-info.json file.
+4. Sign in to your AWS Web Console.
+5. You can refer to [this blog](https://aws.amazon.com/blogs/security/how-to-create-and-manage-users-within-aws-sso/) to create AWS SSO User.
+6. Open the Amazon Grafana service page to find the Grafana workspace you just created.
+7. [Add the AWS SSO User](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-manage-users-and-groups-AMG.html) you just created to your Grafana workspace.
+8. Open the Grafana workspace by clicking on the "Grafana workspace URL" and sign in.
+9. Find the MySQL DataSource you just created, fill in the password(according to the grafana/mysql-datasource-info.json file), and click "Save & Test".
+10. Import Grafana dashboard by upload grafana/grafana-dashboard.json file.
 
 ## Examples
 
