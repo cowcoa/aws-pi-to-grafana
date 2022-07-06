@@ -1,6 +1,6 @@
 ## AWS PI to Grafana
 Demonstrate how to sync AWS RDS/Aurora's Performance Insights metrics to Managed Grafana.<br />
-Since Performance Insights only shows metrics for one DB instance at a time, so does this example, which can only sync PI metrics for a specified DB instance to the Grafana dashboard. But you can extend this example to the cluster level by yourself.
+Since Performance Insights only measures one DB instance at a time, so does this example, which can only sync PI metrics for a specified DB instance to the Grafana dashboard. But you can extend this example to the cluster level by yourself.
 
 ## Prerequisites
 1. Install and configure AWS CLI Version 2 environment:<br />
