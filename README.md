@@ -15,6 +15,13 @@ db:
 | db.SQL.Innodb_rows_deleted | Rows per second | grafana.db_status | Total rows deleted by InnoDB |
 | db.SQL.Innodb_rows_updated | Rows per second | grafana.db_status | Total rows updated by InnoDB |
 | db.SQL.Innodb_rows_read | Rows per second | grafana.db_status | Total rows read by InnoDB |
+| db.SQL.Questions | Queries per second | grafana.db_status | The number of statements executed by the server. This includes only statements sent to the server by clients and not statements executed within stored programs |
+| db.SQL.Queries | Queries per second | grafana.db_status | The number of statements executed by the server. This variable includes statements executed within stored programs |
+| db.SQL.Select_full_join | Queries per second | grafana.db_status | The number of joins that perform table scans because they do not use indexes. If this value is not 0 you should carefully check the indexes of your tables |
+| db.SQL.Select_full_range_join | Queries per second | grafana.db_status | The number of joins that used a range search on a reference table |
+| db.SQL.Select_range | Queries per second | grafana.db_status | The number of joins that used ranges on the first table. This is normally not a critical issue even if the value is quite large |
+| db.SQL.Select_range_check | Queries per second | grafana.db_status | The number of joins without keys that check for key usage after each row. If this is not 0 you should carefully check the indexes of your tables |
+| db.SQL.Select_scan | Queries per second | grafana.db_status | The number of joins that did a full scan of the first table |
 
 ## Prerequisites
 1. Install and configure AWS CLI Version 2 environment:<br />
