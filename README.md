@@ -44,6 +44,21 @@ grafana.db_status:
 | db.IO.Innodb_log_writes | Operations per second | The number of physical writes to the InnoDB redo log |
 | db.IO.Innodb_log_write_requests | Operations per second | The Number of requests to write to the InnoDB redo log |
 | db.IO.Innodb_dblwr_writes | Operations per second | The number of writes done to the InnoDB double write buffer |
+| db.Temp.Created_tmp_disk_tables | Tables per second | The number of internal on-disk temporary tables created by the server while executing statements |
+| db.Temp.Created_tmp_tables | Tables per second | The number of internal temporary tables created by the server while executing statements |
+| db.Transactions.active_transactions | Transactions | Number of Active transactions |
+| db.Cache.Innodb_buffer_pool_reads | Pages per second | The number of logical reads that InnoDB could not satisfy from the buffer pool and had to read directly from disk |
+| db.Cache.Innodb_buffer_pool_read_requests | Pages per second | The number of logical read requests |
+| db.Cache.Innodb_buffer_pool_pages_data | Pages | The number of pages in the InnoDB buffer pool containing data. The number includes both dirty and clean pages |
+| db.Cache.Innodb_buffer_pool_pages_total | Pages | The total size of the InnoDB buffer pool in pages |
+| db.Cache.Opened_tables | Tables | The number of tables that have been opened. If Opened_tables is big your table_open_cache value is probably too small |
+| db.Cache.Opened_table_definitions | Tables | The number of .frm files that have been cached |
+| db.Transactions.trx_rseg_history_len | Length | Length of the TRX_RSEG_HISTORY list |
+| db.Cache.innoDB_buffer_pool_hits | Pages per second | The number of reads that InnoDB could satisfy from the buffer pool |
+| db.Cache.innoDB_buffer_pool_hit_rate | Percentage | The percentage of reads that InnoDB could satisfy from the buffer pool |
+| db.Cache.innoDB_buffer_pool_usage | Percentage | The percentage of the InnoDB buffer pool that contains data (pages) |
+| db.IO.innoDB_datafile_writes_to_disk | Operations per second | Number of InnoDB datafile writes to disk excluding doublewrite and redo logging write operations |
+| db.SQL.innodb_rows_changed | Rows per second | Total InnoDB row operations |
 
 ## Prerequisites
 1. Install and configure AWS CLI Version 2 environment:<br />
