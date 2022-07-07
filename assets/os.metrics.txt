@@ -1,0 +1,439 @@
+{
+    "Metrics": [
+        {
+            "Metric": "os.general.numVCPUs",
+            "Description": "The number of virtual CPUs for the DB instance",
+            "Unit": "vCPUs"
+        },
+        {
+            "Metric": "os.cpuUtilization.guest",
+            "Description": "The percentage of CPU in use by guest programs",
+            "Unit": "Percent"
+        },
+        {
+            "Metric": "os.cpuUtilization.idle",
+            "Description": "The percentage of CPU that is idle",
+            "Unit": "Percent"
+        },
+        {
+            "Metric": "os.cpuUtilization.irq",
+            "Description": "The percentage of CPU in use by software interrupts",
+            "Unit": "Percent"
+        },
+        {
+            "Metric": "os.cpuUtilization.nice",
+            "Description": "The percentage of CPU in use by programs running at lowest priority",
+            "Unit": "Percent"
+        },
+        {
+            "Metric": "os.cpuUtilization.steal",
+            "Description": "The percentage of CPU in use by other virtual machines",
+            "Unit": "Percent"
+        },
+        {
+            "Metric": "os.cpuUtilization.system",
+            "Description": "The percentage of CPU in use by the kernel",
+            "Unit": "Percent"
+        },
+        {
+            "Metric": "os.cpuUtilization.total",
+            "Description": "The total percentage of the CPU in use. This value includes the nice value",
+            "Unit": "Percent"
+        },
+        {
+            "Metric": "os.cpuUtilization.user",
+            "Description": "The percentage of CPU in use by user programs",
+            "Unit": "Percent"
+        },
+        {
+            "Metric": "os.cpuUtilization.wait",
+            "Description": "The percentage of CPU unused while waiting for I/O access",
+            "Unit": "Percent"
+        },
+        {
+            "Metric": "os.diskIO.filesystem.avgQueueLen",
+            "Description": "The number of requests waiting in the I/O device's queue",
+            "Unit": "Requests"
+        },
+        {
+            "Metric": "os.diskIO.filesystem.avgReqSz",
+            "Description": "The average request size in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.diskIO.filesystem.await",
+            "Description": "The number of milliseconds required to respond to requests including queue time and service time",
+            "Unit": "Milliseconds"
+        },
+        {
+            "Metric": "os.diskIO.filesystem.readIOsPS",
+            "Description": "The number of read operations per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.filesystem.readKb",
+            "Description": "The total number of kilobytes read",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.diskIO.filesystem.readKbPS",
+            "Description": "The number of kilobytes read per second",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.diskIO.filesystem.rrqmPS",
+            "Description": "The number of merged read requests queued per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.filesystem.tps",
+            "Description": "The number of I/O transactions per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.filesystem.util",
+            "Description": "The percentage of CPU time during which requests were issued",
+            "Unit": "Percent"
+        },
+        {
+            "Metric": "os.diskIO.filesystem.writeIOsPS",
+            "Description": "The number of write operations per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.filesystem.writeKb",
+            "Description": "The total number of kilobytes written",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.filesystem.writeKbPS",
+            "Description": "The number of kilobytes written per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.filesystem.wrqmPS",
+            "Description": "The number of merged write requests queued per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.nvme2n1.avgQueueLen",
+            "Description": "The number of requests waiting in the I/O device's queue",
+            "Unit": "Requests"
+        },
+        {
+            "Metric": "os.diskIO.nvme2n1.avgReqSz",
+            "Description": "The average request size in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.diskIO.nvme2n1.await",
+            "Description": "The number of milliseconds required to respond to requests including queue time and service time",
+            "Unit": "Milliseconds"
+        },
+        {
+            "Metric": "os.diskIO.nvme2n1.readIOsPS",
+            "Description": "The number of read operations per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.nvme2n1.readKb",
+            "Description": "The total number of kilobytes read",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.diskIO.nvme2n1.readKbPS",
+            "Description": "The number of kilobytes read per second",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.diskIO.nvme2n1.rrqmPS",
+            "Description": "The number of merged read requests queued per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.nvme2n1.tps",
+            "Description": "The number of I/O transactions per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.nvme2n1.util",
+            "Description": "The percentage of CPU time during which requests were issued",
+            "Unit": "Percent"
+        },
+        {
+            "Metric": "os.diskIO.nvme2n1.writeIOsPS",
+            "Description": "The number of write operations per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.nvme2n1.writeKb",
+            "Description": "The total number of kilobytes written",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.nvme2n1.writeKbPS",
+            "Description": "The number of kilobytes written per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.nvme2n1.wrqmPS",
+            "Description": "The number of merged write requests queued per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.rdsdev.avgQueueLen",
+            "Description": "The number of requests waiting in the I/O device's queue",
+            "Unit": "Requests"
+        },
+        {
+            "Metric": "os.diskIO.rdsdev.avgReqSz",
+            "Description": "The average request size in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.diskIO.rdsdev.await",
+            "Description": "The number of milliseconds required to respond to requests including queue time and service time",
+            "Unit": "Milliseconds"
+        },
+        {
+            "Metric": "os.diskIO.rdsdev.readIOsPS",
+            "Description": "The number of read operations per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.rdsdev.readKb",
+            "Description": "The total number of kilobytes read",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.diskIO.rdsdev.readKbPS",
+            "Description": "The number of kilobytes read per second",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.diskIO.rdsdev.rrqmPS",
+            "Description": "The number of merged read requests queued per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.rdsdev.tps",
+            "Description": "The number of I/O transactions per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.rdsdev.util",
+            "Description": "The percentage of CPU time during which requests were issued",
+            "Unit": "Percent"
+        },
+        {
+            "Metric": "os.diskIO.rdsdev.writeIOsPS",
+            "Description": "The number of write operations per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.rdsdev.writeKb",
+            "Description": "The total number of kilobytes written",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.rdsdev.writeKbPS",
+            "Description": "The number of kilobytes written per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.diskIO.rdsdev.wrqmPS",
+            "Description": "The number of merged write requests queued per second",
+            "Unit": "Per Second"
+        },
+        {
+            "Metric": "os.fileSys.maxFiles",
+            "Description": "The maximum number of files that can be created for the file system",
+            "Unit": "Files"
+        },
+        {
+            "Metric": "os.fileSys.total",
+            "Description": "The total number of disk space available for the file system in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.fileSys.used",
+            "Description": "The amount of disk space used by files in the file system in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.fileSys.usedFilePercent",
+            "Description": "The percentage of available files in use",
+            "Unit": "Percent"
+        },
+        {
+            "Metric": "os.fileSys.usedFiles",
+            "Description": "The number of files in the file system",
+            "Unit": "Files"
+        },
+        {
+            "Metric": "os.fileSys.usedPercent",
+            "Description": "The percentage of the file-system disk space in use",
+            "Unit": "Percent"
+        },
+        {
+            "Metric": "os.loadAverageMinute.fifteen",
+            "Description": "The number of processes requesting CPU time over the last 15 minutes",
+            "Unit": "Processes"
+        },
+        {
+            "Metric": "os.loadAverageMinute.five",
+            "Description": "The number of processes requesting CPU time over the last 5 minutes",
+            "Unit": "Processes"
+        },
+        {
+            "Metric": "os.loadAverageMinute.one",
+            "Description": "The number of processes requesting CPU time over the last minute",
+            "Unit": "Processes"
+        },
+        {
+            "Metric": "os.memory.active",
+            "Description": "The amount of assigned memory in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.memory.buffers",
+            "Description": "The amount of memory used for buffering I/O requests prior to writing to the storage device in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.memory.cached",
+            "Description": "The amount of memory used for caching file system–based I/O",
+            "Unit": "DB"
+        },
+        {
+            "Metric": "os.memory.dirty",
+            "Description": "The amount of memory pages in RAM that have been modified but not written to their related data block in storage in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.memory.free",
+            "Description": "The amount of unassigned memory in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.memory.hugePagesFree",
+            "Description": "The number of free huge pages. Huge pages are a feature of the Linux kernel",
+            "Unit": "Pages"
+        },
+        {
+            "Metric": "os.memory.hugePagesRsvd",
+            "Description": "The number of committed huge pages",
+            "Unit": "Pages"
+        },
+        {
+            "Metric": "os.memory.hugePagesSize",
+            "Description": "The size for each huge pages unit in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.memory.hugePagesSurp",
+            "Description": "The number of available surplus huge pages over the total",
+            "Unit": "Pages"
+        },
+        {
+            "Metric": "os.memory.hugePagesTotal",
+            "Description": "The total number of huge pages for the system",
+            "Unit": "Pages"
+        },
+        {
+            "Metric": "os.memory.inactive",
+            "Description": "The amount of least-frequently used memory pages in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.memory.mapped",
+            "Description": "The total amount of file-system contents that is memory mapped inside a process address space in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.memory.pageTables",
+            "Description": "The amount of memory used by page tables in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.memory.slab",
+            "Description": "The amount of reusable kernel data structures in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.memory.total",
+            "Description": "The total amount of memory in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.memory.writeback",
+            "Description": "The amount of dirty pages in RAM that are still being written to the backing storage in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.network.rx",
+            "Description": "The number of bytes received per second",
+            "Unit": "Bytes"
+        },
+        {
+            "Metric": "os.network.tx",
+            "Description": "The number of bytes uploaded per second",
+            "Unit": "Bytes"
+        },
+        {
+            "Metric": "os.swap.cached",
+            "Description": "The amount of swap memory in kilobytes used as cache memory",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.swap.free",
+            "Description": "The total amount of swap memory free in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.swap.in",
+            "Description": "The total amount of memory in kilobytes swapped in from disk",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.swap.out",
+            "Description": "The total amount of memory in kilobytes swapped out to disk",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.swap.total",
+            "Description": "The total amount of swap memory available in kilobytes",
+            "Unit": "KB"
+        },
+        {
+            "Metric": "os.tasks.blocked",
+            "Description": "The number of tasks that are blocked",
+            "Unit": "Tasks"
+        },
+        {
+            "Metric": "os.tasks.running",
+            "Description": "The number of tasks that are running",
+            "Unit": "Tasks"
+        },
+        {
+            "Metric": "os.tasks.sleeping",
+            "Description": "The number of tasks that are sleeping",
+            "Unit": "Tasks"
+        },
+        {
+            "Metric": "os.tasks.stopped",
+            "Description": "The number of tasks that are stopped",
+            "Unit": "Tasks"
+        },
+        {
+            "Metric": "os.tasks.total",
+            "Description": "The total number of tasks",
+            "Unit": "Tasks"
+        },
+        {
+            "Metric": "os.tasks.zombie",
+            "Description": "The number of child tasks that are inactive with an active parent task",
+            "Unit": "Tasks"
+        }
+    ]
+}
