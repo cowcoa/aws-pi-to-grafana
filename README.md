@@ -3,6 +3,8 @@ Demonstrate how to sync AWS RDS/Aurora's Performance Insights metrics to Managed
 Since Performance Insights only measures one DB instance at a time, so does this example, which can only sync PI metrics for a specified DB instance to the Grafana dashboard. But you can extend this example to the cluster level by yourself.
 
 ![alt text](../master/assets/aws-pi-to-grafana.png?raw=true)
+![alt text](../master/assets/ScreenShot_01.png?raw=true)
+![alt text](../master/assets/ScreenShot_02.png?raw=true)
 
 ## Supported Metrics 
 
@@ -125,8 +127,6 @@ You can edit the cdk.json file to modify the deployment configuration.
 6. Find the Grafana workspace you just created and [add the AWS SSO User](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-manage-users-and-groups-AMG.html) as the ADMIN.
 7. Sign in to the Grafana workspace and find the MySQL DataSource you just created, fill in the password(according to the grafana/mysql-datasource-info.json file), and click "Save & Test".
 8. Import Grafana dashboard by upload grafana/grafana-dashboard.json file.
-
-## Examples
 
 [Installation]: <https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html>
 [Configuration]: <https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html>
