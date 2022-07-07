@@ -31,6 +31,19 @@ grafana.db_status:
 | db.Locks.innodb_row_lock_waits | Transactions | The number of times operations on InnoDB tables had to wait for a row lock |
 | db.Locks.innodb_deadlocks | Deadlocks per minute | Number of deadlocks |
 | db.Locks.innodb_lock_timeouts | Timeouts | Number of InnoDB lock timeouts |
+| db.Locks.Table_locks_immediate | Requests per second | The number of times that a request for a table lock could be granted immediately |
+| db.Locks.Table_locks_waited | Requests per second | The number of times that a request for a table lock could not be granted immediately and a wait was needed |
+| db.Users.Connections | Connections | The number of connection attempts to the MySQL server |
+| db.Users.Aborted_clients | Connections | The number of connections that were aborted because the client died without closing the connection properly |
+| db.Users.Aborted_connects | Connections | The number of failed attempts to connect to the MySQL server |
+| db.Users.Threads_running | Connections | The number of threads that are not sleeping |
+| db.Users.Threads_created | Connections | The number of threads created to handle connections |
+| db.Users.Threads_connected | Connections | The number of currently open connections |
+| db.IO.Innodb_pages_written | Pages per second | The number of pages written by operations on InnoDB tables |
+| db.IO.Innodb_data_writes | Operations per second | The number InnoDB data write operations |
+| db.IO.Innodb_log_writes | Operations per second | The number of physical writes to the InnoDB redo log |
+| db.IO.Innodb_log_write_requests | Operations per second | The Number of requests to write to the InnoDB redo log |
+| db.IO.Innodb_dblwr_writes | Operations per second | The number of writes done to the InnoDB double write buffer |
 
 ## Prerequisites
 1. Install and configure AWS CLI Version 2 environment:<br />
