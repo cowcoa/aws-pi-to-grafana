@@ -22,6 +22,15 @@ grafana.db_status:
 | db.SQL.Select_range | Queries per second | The number of joins that used ranges on the first table. This is normally not a critical issue even if the value is quite large |
 | db.SQL.Select_range_check | Queries per second | The number of joins without keys that check for key usage after each row. If this is not 0 you should carefully check the indexes of your tables |
 | db.SQL.Select_scan | Queries per second | The number of joins that did a full scan of the first table |
+| db.SQL.Slow_queries | Queries per second | The number of queries that have taken more than long_query_time seconds. This counter increments regardless of whether the slow query log is enabled |
+| db.SQL.Sort_merge_passes | Queries per second | The number of merge passes that the sort algorithm has had to do. If this value is large you should consider increasing the value of the sort_buffer_size system variable |
+| db.SQL.Sort_range | Queries per second | The number of sorts that were done using ranges |
+| db.SQL.Sort_rows | Queries per second | The number of sorted rows |
+| db.SQL.Sort_scan | Queries per second | The number of sorts that were done by scanning the table |
+| db.Locks.Innodb_row_lock_time | Milliseconds | The total time spent in acquiring row locks for InnoDB tables in milliseconds. |
+| db.Locks.innodb_row_lock_waits | Transactions | The number of times operations on InnoDB tables had to wait for a row lock |
+| db.Locks.innodb_deadlocks | Deadlocks per minute | Number of deadlocks |
+| db.Locks.innodb_lock_timeouts | Timeouts | Number of InnoDB lock timeouts |
 
 ## Prerequisites
 1. Install and configure AWS CLI Version 2 environment:<br />
