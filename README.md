@@ -64,6 +64,8 @@ grafana.db_status:
 | db.IO.innoDB_datafile_writes_to_disk | Operations per second | Number of InnoDB datafile writes to disk excluding doublewrite and redo logging write operations |
 | db.SQL.innodb_rows_changed | Rows per second | Total InnoDB row operations |
 
+For more metrics information, please refer to [db.metrics.txt](assets/db.metrics.txt), [os.metrics.txt](assets/os.metrics.txt) and [db.sql_tokenized.stats.metrics.txt](assets/db.sql_tokenized.stats.metrics.txt).
+
 ## Prerequisites
 1. Install and configure AWS CLI Version 2 environment:<br />
    [Installation] - Installing or updating the latest version of the AWS CLI v2.<br />
