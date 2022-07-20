@@ -258,6 +258,16 @@ func syncMetrics(queryInfo MetricsQueryInfo, dbClient *sql.DB, piClient *pi.Clie
 			}
 
 			for _, dataPoint := range metric.DataPoints {
+				if dataPoint.Timestamp == nil {
+					log.Println("******* dataPoint.Timestamp == nil *******")
+					continue
+				}
+				if dataPoint.Value == nil {
+					log.Println("******* dataPoint.Value == nil *******")
+					log.Printf("datapoint: (%s, null)\n", dataPoint.Timestamp.String())
+					continue
+				}
+
 				log.Printf("datapoint: (%s, %f)\n", dataPoint.Timestamp.String(), *dataPoint.Value)
 
 				// Insert
