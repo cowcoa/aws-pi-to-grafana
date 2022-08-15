@@ -71,6 +71,7 @@ func NewRdsMySqlClusterStack(scope constructs.Construct, id string, props *RdsMy
 		},
 	})
 	// Database credential in SecretManager
+	// The Secret must be a JSON string with a “username“ and “password“ field: “`
 	dbSecret := secretmgr.NewSecret(stack, jsii.String("DBSecret"), &secretmgr.SecretProps{
 		SecretName: jsii.String(*stack.StackName() + "-Secret"),
 		GenerateSecretString: &secretmgr.SecretStringGenerator{
@@ -79,76 +80,102 @@ func NewRdsMySqlClusterStack(scope constructs.Construct, id string, props *RdsMy
 			IncludeSpace:         jsii.Bool(false),
 			GenerateStringKey:    jsii.String("password"),
 		},
+		RemovalPolicy: awscdk.RemovalPolicy_DESTROY,
 	})
 	// Create RDS MySQL DB instance.
 	dbPrimInstance := awsrds.NewDatabaseInstance(stack, jsii.String("PrimaryDBInstance"), &awsrds.DatabaseInstanceProps{
-		Vpc:                     vpc,
-		AutoMinorVersionUpgrade: jsii.Bool(true),
-		BackupRetention:         awscdk.Duration_Days(jsii.Number(7)),
+		InstanceIdentifier: jsii.String(*stack.StackName() + "-PrimaryDBInstance"),
+		Vpc:                vpc,
+		AvailabilityZone:   jsii.String(*stack.Region() + "a"),
+		SecurityGroups: &[]awsec2.ISecurityGroup{
+			sg,
+		},
+		InstanceType:               awsec2.InstanceType_Of(awsec2.InstanceClass_MEMORY5, awsec2.InstanceSize_LARGE),
+		SubnetGroup:                subnetGrp,
+		ParameterGroup:             paramGrp,
+		StorageType:                awsrds.StorageType_IO1,
+		Iops:                       jsii.Number(5000),
+		AllocatedStorage:           jsii.Number(100),
+		MaxAllocatedStorage:        jsii.Number(500),
+		StorageEncrypted:           jsii.Bool(false),
+		MultiAz:                    jsii.Bool(true),
+		DatabaseName:               jsii.String(config.MySqlConnection.Database),
+		Engine:                     engine,
+		Port:                       jsii.Number(3306),
+		PubliclyAccessible:         jsii.Bool(true),
+		Credentials:                awsrds.Credentials_FromSecret(dbSecret, jsii.String(config.MySqlConnection.User)),
+		IamAuthentication:          jsii.Bool(false),
+		AllowMajorVersionUpgrade:   jsii.Bool(false),
+		AutoMinorVersionUpgrade:    jsii.Bool(true),
+		BackupRetention:            awscdk.Duration_Days(jsii.Number(7)),
+		CopyTagsToSnapshot:         jsii.Bool(true),
+		DeleteAutomatedBackups:     jsii.Bool(true),
+		PreferredBackupWindow:      jsii.String("15:30-16:30"),
+		PreferredMaintenanceWindow: jsii.String("wed:16:40-wed:17:40"),
 		CloudwatchLogsExports: &[]*string{
 			jsii.String("error"),
 			jsii.String("general"),
 			jsii.String("slowquery"),
 		},
 		CloudwatchLogsRetention:     awslogs.RetentionDays_FIVE_DAYS,
-		CopyTagsToSnapshot:          jsii.Bool(true),
-		DeleteAutomatedBackups:      jsii.Bool(true),
-		DeletionProtection:          jsii.Bool(false),
 		EnablePerformanceInsights:   jsii.Bool(true),
-		IamAuthentication:           jsii.Bool(false),
-		InstanceIdentifier:          jsii.String(*stack.StackName() + "-PrimaryDBInstance"),
-		Iops:                        jsii.Number(2000),
-		MaxAllocatedStorage:         jsii.Number(100),
-		MonitoringInterval:          awscdk.Duration_Seconds(jsii.Number(60)),
-		MultiAz:                     jsii.Bool(true),
-		ParameterGroup:              paramGrp,
 		PerformanceInsightRetention: awsrds.PerformanceInsightRetention_DEFAULT,
-		Port:                        jsii.Number(3306),
-		PreferredBackupWindow:       jsii.String("15:30-16:30"),
-		PreferredMaintenanceWindow:  jsii.String("wed:16:40-wed:17:40"),
-		PubliclyAccessible:          jsii.Bool(true),
+		MonitoringInterval:          awscdk.Duration_Seconds(jsii.Number(60)),
+		DeletionProtection:          jsii.Bool(false),
 		RemovalPolicy:               awscdk.RemovalPolicy_DESTROY,
-		SecurityGroups: &[]awsec2.ISecurityGroup{
-			sg,
-		},
-		StorageType:              awsrds.StorageType_GP2,
-		SubnetGroup:              subnetGrp,
-		Engine:                   engine,
-		AllocatedStorage:         jsii.Number(20),
-		AllowMajorVersionUpgrade: jsii.Bool(false),
-		DatabaseName:             jsii.String(config.MySqlConnection.Database),
-		InstanceType:             awsec2.InstanceType_Of(awsec2.InstanceClass_MEMORY5, awsec2.InstanceSize_LARGE),
-		Credentials:              awsrds.Credentials_FromSecret(dbSecret, jsii.String(config.MySqlConnection.User)),
-		StorageEncrypted:         jsii.Bool(false),
+		// CharacterSetName:           jsii.String("utf8mb4"), // isn't supported when creating an instance using version 5.7 of mysql
+		// CloudwatchLogsRetentionRole:     nil, // CDK utility role, automatically created
+		// MonitoringRole:                  nil, // will be automatically created
+		// OptionGroup:                     nil, // https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MySQL.Options.html
+		// PerformanceInsightEncryptionKey: nil, // no need to specify if you don't encrypt your PI
+		// ProcessorFeatures:           &awsrds.ProcessorFeatures{}, // no need to specify
+		// S3ExportBuckets:             &[]awss3.IBucket{}, // for exporting snapshot to s3 bucket
+		// S3ExportRole:                nil,
+		// VpcSubnets:               &awsec2.SubnetSelection{}, specified in subnet group
+		// Parameters:               &map[string]*string{}, // specified in parameter group
+		// LicenseModel:             "", // for Microsoft SQL Server
+		// Timezone:                 new(string), // only support by Microsoft SQL Server
+		// S3ImportBuckets:             &[]awss3.IBucket{}, // only support by Microsoft SQL Server
+		// S3ImportRole:                nil,
+		// Domain:                          new(string), // using MS AD for Microsoft SQL Server DB instance
+		// DomainRole:                      nil,
+		// StorageEncryptionKey: nil, // no need to specify if you don't encrypt your database
 	})
 
 	awsrds.NewDatabaseInstanceReadReplica(stack, jsii.String("ReplicaDBInstance"), &awsrds.DatabaseInstanceReadReplicaProps{
-		InstanceIdentifier: jsii.String("ReplicaDBInstance"),
+		InstanceIdentifier: jsii.String(*stack.StackName() + "ReplicaDBInstance"),
 		Vpc:                vpc,
-		ParameterGroup:     paramGrp,
+		AvailabilityZone:   jsii.String(*stack.Region() + "b"),
 		SecurityGroups: &[]awsec2.ISecurityGroup{
 			sg,
 		},
-		SubnetGroup:            subnetGrp,
 		InstanceType:           awsec2.InstanceType_Of(awsec2.InstanceClass_MEMORY5, awsec2.InstanceSize_LARGE),
+		SubnetGroup:            subnetGrp,
+		ParameterGroup:         paramGrp,
+		StorageType:            awsrds.StorageType_GP2,
 		SourceDatabaseInstance: dbPrimInstance,
-		StorageEncrypted:       jsii.Bool(false),
 	})
-
-	config.MySqlConnection.Host = *dbPrimInstance.InstanceEndpoint().Hostname()
 
 	// Output data source info.
-	awscdk.NewCfnOutput(stack, jsii.String("host"), &awscdk.CfnOutputProps{
-		Value: jsii.String(config.MySqlConnection.Host),
+	awscdk.NewCfnOutput(stack, jsii.String("Host"), &awscdk.CfnOutputProps{
+		Value: dbPrimInstance.InstanceEndpoint().Hostname(),
 	})
-	awscdk.NewCfnOutput(stack, jsii.String("database"), &awscdk.CfnOutputProps{
+	awscdk.NewCfnOutput(stack, jsii.String("Database"), &awscdk.CfnOutputProps{
 		Value: jsii.String(config.MySqlConnection.Database),
 	})
-	awscdk.NewCfnOutput(stack, jsii.String("user"), &awscdk.CfnOutputProps{
+	awscdk.NewCfnOutput(stack, jsii.String("User"), &awscdk.CfnOutputProps{
 		Value: jsii.String(config.MySqlConnection.User),
 	})
-	awscdk.NewCfnOutput(stack, jsii.String("password"), &awscdk.CfnOutputProps{
-		Value: jsii.String(config.MySqlConnection.Password),
+
+	// Output secet info.
+	awscdk.NewCfnOutput(stack, jsii.String("SecretName"), &awscdk.CfnOutputProps{
+		Value: dbSecret.SecretName(),
+	})
+	awscdk.NewCfnOutput(stack, jsii.String("SecretArn"), &awscdk.CfnOutputProps{
+		Value: dbSecret.SecretArn(),
+	})
+	awscdk.NewCfnOutput(stack, jsii.String("SecretFullArn"), &awscdk.CfnOutputProps{
+		Value: dbSecret.SecretFullArn(),
 	})
 
 	return stack
