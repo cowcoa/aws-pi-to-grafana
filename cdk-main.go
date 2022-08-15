@@ -7,6 +7,7 @@ import (
 	"github.com/aws/aws-cdk-go/awscdk/v2/awsec2"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awslogs"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awsrds"
+	secretmgr "github.com/aws/aws-cdk-go/awscdk/v2/awssecretsmanager"
 
 	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/aws/jsii-runtime-go"
@@ -47,11 +48,11 @@ func NewRdsMySqlClusterStack(scope constructs.Construct, id string, props *RdsMy
 		jsii.String("Allow requests to MySQL DB instance."),
 		jsii.Bool(false),
 	)
-
 	// Database engine version.
 	engine := awsrds.DatabaseInstanceEngine_Mysql(&awsrds.MySqlInstanceEngineProps{
 		Version: awsrds.MysqlEngineVersion_VER_5_7_34(),
 	})
+	// Database subnet group.
 	subnetGrp := awsrds.NewSubnetGroup(stack, jsii.String("SubnetGroup"), &awsrds.SubnetGroupProps{
 		Vpc:             vpc,
 		RemovalPolicy:   awscdk.RemovalPolicy_DESTROY,
@@ -59,6 +60,7 @@ func NewRdsMySqlClusterStack(scope constructs.Construct, id string, props *RdsMy
 		VpcSubnets:      &awsec2.SubnetSelection{SubnetType: awsec2.SubnetType_PUBLIC},
 		Description:     jsii.String("Custom SubnetGroup"),
 	})
+	// Database parameter group.
 	// https://aws.amazon.com/blogs/database/best-practices-for-configuring-parameters-for-amazon-rds-for-mysql-part-1-parameters-related-to-performance/
 	paramGrp := awsrds.NewParameterGroup(stack, jsii.String("ParameterGroup"), &awsrds.ParameterGroupProps{
 		Engine:      engine,
@@ -68,20 +70,16 @@ func NewRdsMySqlClusterStack(scope constructs.Construct, id string, props *RdsMy
 			"innodb_sync_array_size": jsii.String("16"),
 		},
 	})
-
-	/*
-		dbsecjson := `{"some":"json"}`
-		dbSecret := secretmgr.NewSecret(stack, jsii.String("DBSecret"), &secretmgr.SecretProps{
-			SecretName: jsii.String(*stack.StackName() + "-Secret"),
-			GenerateSecretString: &secretmgr.SecretStringGenerator{
-				SecretStringTemplate: jsii.String(string(dbsecjson)),
-				ExcludePunctuation:   jsii.Bool(true),
-				IncludeSpace:         jsii.Bool(true),
-				GenerateStringKey:    jsii.String("password"),
-			},
-		})
-	*/
-
+	// Database credential in SecretManager
+	dbSecret := secretmgr.NewSecret(stack, jsii.String("DBSecret"), &secretmgr.SecretProps{
+		SecretName: jsii.String(*stack.StackName() + "-Secret"),
+		GenerateSecretString: &secretmgr.SecretStringGenerator{
+			SecretStringTemplate: jsii.String(string(`{"username":"cow"}`)),
+			ExcludePunctuation:   jsii.Bool(true),
+			IncludeSpace:         jsii.Bool(false),
+			GenerateStringKey:    jsii.String("password"),
+		},
+	})
 	// Create RDS MySQL DB instance.
 	dbPrimInstance := awsrds.NewDatabaseInstance(stack, jsii.String("PrimaryDBInstance"), &awsrds.DatabaseInstanceProps{
 		Vpc:                     vpc,
@@ -113,18 +111,15 @@ func NewRdsMySqlClusterStack(scope constructs.Construct, id string, props *RdsMy
 		SecurityGroups: &[]awsec2.ISecurityGroup{
 			sg,
 		},
-		StorageType: awsrds.StorageType_GP2,
-		SubnetGroup: subnetGrp,
-		//VpcSubnets:                  &awsec2.SubnetSelection{SubnetType: awsec2.SubnetType_PUBLIC},
+		StorageType:              awsrds.StorageType_GP2,
+		SubnetGroup:              subnetGrp,
 		Engine:                   engine,
 		AllocatedStorage:         jsii.Number(20),
 		AllowMajorVersionUpgrade: jsii.Bool(false),
 		DatabaseName:             jsii.String(config.MySqlConnection.Database),
 		InstanceType:             awsec2.InstanceType_Of(awsec2.InstanceClass_MEMORY5, awsec2.InstanceSize_LARGE),
-		Credentials: awsrds.Credentials_FromGeneratedSecret(jsii.String(config.MySqlConnection.User), &awsrds.CredentialsBaseOptions{
-			SecretName: jsii.String("password"),
-		}),
-		StorageEncrypted: jsii.Bool(false),
+		Credentials:              awsrds.Credentials_FromSecret(dbSecret, jsii.String(config.MySqlConnection.User)),
+		StorageEncrypted:         jsii.Bool(false),
 	})
 
 	/*

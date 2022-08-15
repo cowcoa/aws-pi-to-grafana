@@ -17,19 +17,14 @@ type DataSource struct {
 // This is just for convenience of testing.
 var MySqlConnection = DataSource{
 	Host:     "",
-	Database: "mydatabase",
+	Database: "mydb",
 	User:     "cow",
-	Password: "day1",
+	Password: "",
 }
-
-const (
-	// EventBridge trigger Lambda function per minutes.
-	ScheduleRate = 5
-)
 
 // DO NOT modify this function, change stack name by 'cdk.json/context/stackName'.
 func StackName(scope constructs.Construct) string {
-	stackName := "PI-to-Grafana"
+	stackName := "RdsMysqlCluster"
 
 	ctxValue := scope.Node().TryGetContext(jsii.String("stackName"))
 	if v, ok := ctxValue.(string); ok {
