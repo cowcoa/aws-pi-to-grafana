@@ -4,9 +4,6 @@
 *.dll
 *.so
 *.dylib
-functions/bin/
-functions/data-collector/data-collector
-grafana/*info.json
 
 # Test binary, built with `go test -c`
 *.test
@@ -20,3 +17,7 @@ grafana/*info.json
 # CDK asset staging directory
 .cdk.staging
 cdk.out
+cdk.context.json
+
+# Apps directory
+apps/*

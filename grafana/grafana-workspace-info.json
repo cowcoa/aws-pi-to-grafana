@@ -1,0 +1,7 @@
+{
+  "workspaceName": "PI2Grafana",
+  "workspaceEndpoint": "g-8573b9060b.grafana-workspace.ap-northeast-1.amazonaws.com",
+  "workspaceId": "g-8573b9060b",
+  "workspaceRole": "PI2Grafana-Role",
+  "deploymentRegion": "ap-northeast-1"
+}

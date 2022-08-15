@@ -8,7 +8,7 @@ CDK_ACC="$(aws sts get-caller-identity --output text --query 'Account')"
 CDK_REGION="$(jq -r .context.deploymentRegion ./cdk.json)"
 
 # Check execution env.
-if [ -z $CODEBUILD_BUILD_ID ]
+if [ -z "$CODEBUILD_BUILD_ID" ]
 then
     if [ -z "$CDK_REGION" ]; then
         CDK_REGION="$(aws configure get region)"
@@ -22,23 +22,11 @@ else
 fi
 
 # CDK command pre-process.
-pushd ./functions &> /dev/null
-    # Compile to x86_64 regardless of local arch.
-    # This is the target arch that we will deploy to Lambda service.
-    make TARGET_DIR="." GO_ARCH="amd64"
-popd &> /dev/null
 
 # CDK command.
-DB_INSTANCE_NAME="$(jq -r .context.dbInstanceName ./cdk.json)"
-DB_INSTANCE_IDENTIFIER="$(aws rds describe-db-instances \
-                            --db-instance-identifier ${DB_INSTANCE_NAME} \
-                            --region ${CDK_REGION} \
-                            --output text \
-                            --query DBInstances[0].DbiResourceId)"
-set -- "$@" "-c" "dbInstanceId=${DB_INSTANCE_IDENTIFIER}" "--outputs-file" "${SHELL_PATH}/cdk.out/datasource-info.json"
+# Valid deploymentStage are: [DEV, PROD]
+set -- "$@" "-c" "deploymentStage=DEV"
 $SHELL_PATH/cdk-cli-wrapper.sh ${CDK_ACC} ${CDK_REGION} "$@"
+cdk_exec_result=$?
 
 # CDK command post-process.
-if [ "$CDK_CMD" == "destroy" ]; then
-    rm -rf $SHELL_PATH/cdk.out/
-fi

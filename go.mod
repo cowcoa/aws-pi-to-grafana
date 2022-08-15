@@ -1,4 +1,4 @@
-module pi-to-grafana
+module rds-mysql-cluster
 
 go 1.17
 
