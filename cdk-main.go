@@ -122,20 +122,18 @@ func NewRdsMySqlClusterStack(scope constructs.Construct, id string, props *RdsMy
 		StorageEncrypted:         jsii.Bool(false),
 	})
 
-	/*
-		awsrds.NewDatabaseInstanceReadReplica(stack, jsii.String("ReplicaDBInstance"), &awsrds.DatabaseInstanceReadReplicaProps{
-			InstanceIdentifier: jsii.String("ReplicaDBInstance"),
-			Vpc:                vpc,
-			ParameterGroup:     paramGrp,
-			SecurityGroups: &[]awsec2.ISecurityGroup{
-				sg,
-			},
-			SubnetGroup:            subnetGrp,
-			InstanceType:           awsec2.InstanceType_Of(awsec2.InstanceClass_MEMORY6_GRAVITON, awsec2.InstanceSize_LARGE),
-			SourceDatabaseInstance: dbPrimInstance,
-			StorageEncrypted:       jsii.Bool(false),
-		})
-	*/
+	awsrds.NewDatabaseInstanceReadReplica(stack, jsii.String("ReplicaDBInstance"), &awsrds.DatabaseInstanceReadReplicaProps{
+		InstanceIdentifier: jsii.String("ReplicaDBInstance"),
+		Vpc:                vpc,
+		ParameterGroup:     paramGrp,
+		SecurityGroups: &[]awsec2.ISecurityGroup{
+			sg,
+		},
+		SubnetGroup:            subnetGrp,
+		InstanceType:           awsec2.InstanceType_Of(awsec2.InstanceClass_MEMORY5, awsec2.InstanceSize_LARGE),
+		SourceDatabaseInstance: dbPrimInstance,
+		StorageEncrypted:       jsii.Bool(false),
+	})
 
 	config.MySqlConnection.Host = *dbPrimInstance.InstanceEndpoint().Hostname()
 
