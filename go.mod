@@ -1,6 +1,6 @@
 module rds-mysql-cluster
 
-go 1.17
+go 1.19
 
 require (
 	github.com/aws/aws-cdk-go/awscdk/v2 v2.16.0
