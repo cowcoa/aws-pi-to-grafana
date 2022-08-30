@@ -1,0 +1,149 @@
+{
+    "Metrics": [
+        {
+            "Metric": "db.sql_tokenized.stats.count_star_per_sec",
+            "Description": "calls",
+            "Unit": "/sec"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_timer_wait_per_sec",
+            "Description": "AAE",
+            "Unit": ""
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_select_full_join_per_sec",
+            "Description": "select full join",
+            "Unit": "/sec"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_select_range_check_per_sec",
+            "Description": "select range check",
+            "Unit": "/sec"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_select_scan_per_sec",
+            "Description": "select scan",
+            "Unit": "/sec"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_sort_merge_passes_per_sec",
+            "Description": "sort merge passes",
+            "Unit": "/sec"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_sort_scan_per_sec",
+            "Description": "sort scan",
+            "Unit": "/sec"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_sort_range_per_sec",
+            "Description": "sort range",
+            "Unit": "/sec"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_sort_rows_per_sec",
+            "Description": "sort rows",
+            "Unit": "/sec"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_rows_affected_per_sec",
+            "Description": "rows affected",
+            "Unit": "/sec"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_rows_examined_per_sec",
+            "Description": "rows examined",
+            "Unit": "/sec"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_rows_sent_per_sec",
+            "Description": "rows sent",
+            "Unit": "/sec"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_created_tmp_disk_tables_per_sec",
+            "Description": "created tmp disk tables",
+            "Unit": "/sec"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_created_tmp_tables_per_sec",
+            "Description": "created tmp tables",
+            "Unit": "/sec"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_lock_time_per_sec",
+            "Description": "lock time (ms)",
+            "Unit": "/sec"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_timer_wait_per_call",
+            "Description": "avg latency (ms)",
+            "Unit": "/call"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_select_full_join_per_call",
+            "Description": "select full join",
+            "Unit": "/call"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_select_range_check_per_call",
+            "Description": "select range check",
+            "Unit": "/call"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_select_scan_per_call",
+            "Description": "select scan",
+            "Unit": "/call"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_sort_merge_passes_per_call",
+            "Description": "sort merge passes",
+            "Unit": "/call"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_sort_scan_per_call",
+            "Description": "sort scan",
+            "Unit": "/call"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_sort_range_per_call",
+            "Description": "sort range",
+            "Unit": "/call"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_sort_rows_per_call",
+            "Description": "sort rows",
+            "Unit": "/call"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_rows_affected_per_call",
+            "Description": "rows affected",
+            "Unit": "/call"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_rows_examined_per_call",
+            "Description": "rows examined",
+            "Unit": "/call"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_rows_sent_per_call",
+            "Description": "rows sent",
+            "Unit": "/call"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_created_tmp_disk_tables_per_call",
+            "Description": "created tmp disk tables",
+            "Unit": "/call"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_created_tmp_tables_per_call",
+            "Description": "created tmp tables",
+            "Unit": "/call"
+        },
+        {
+            "Metric": "db.sql_tokenized.stats.sum_lock_time_per_call",
+            "Description": "lock time (ms)",
+            "Unit": "/call"
+        }
+    ]
+}

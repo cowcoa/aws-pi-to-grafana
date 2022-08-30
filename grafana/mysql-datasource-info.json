@@ -1,0 +1,10 @@
+{
+  "name": "PI2Grafana",
+  "type": "mysql",
+  "url": "pi2grafana-grafanadatasource.c2jzihkjutmr.ap-northeast-1.rds.amazonaws.com",
+  "database": "grafana_db",
+  "user": "grafana_usr",
+  "password": "grafana_pwd",
+  "access": "direct",
+  "isDefault": true
+}

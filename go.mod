@@ -1,6 +1,6 @@
-module rds-mysql-cluster
+module pi-to-grafana
 
-go 1.19
+go 1.17
 
 require (
 	github.com/aws/aws-cdk-go/awscdk/v2 v2.16.0
